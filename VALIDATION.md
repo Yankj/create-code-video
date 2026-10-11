@@ -1,4 +1,14 @@
-# Validation — v3.1.0 — 2026-10-11
+# Validation — v3.2.0 — 2026-10-11
+
+## Voice and publishing guidance — 3.2
+
+Reviewed the original narrated project's Edge, CustomVoice and Base configurations, paragraph generation, reference reuse, alignment and whole-track processing records. The existing user's positive feedback is case evidence, not an independent listening test or a comparison against Doubao. The new [TTS guide](references/tts-selection.md) distinguishes this used route from other documented candidates, with primary-source links and the verification date.
+
+Checked the Skill's entry routing, the expanded opening/turn/closing directions, the early cover/copy question, and both JSON record examples. The voice JSON is a production record, not a universal SDK payload; Base has no CustomVoice instruction field. No new synthesis, free-account eligibility test, cloud call or listening review is claimed for this documentation revision.
+
+The Motion Lab source, dependencies and GIF are unchanged. Its 3.1 render measurements below remain the evidence for that example. Documentation links, Skill metadata, JSON parsing and preview freshness are checked for this revision; CI also runs the existing 21 utility/Node tests and TypeScript.
+
+## Motion Lab export — 3.1
 
 Environment: macOS ARM64, Node 22.17.1, Python 3.12, Remotion 4.0.534, React 19.2.3, R3F 9.5.0, Three.js 0.181.2.
 

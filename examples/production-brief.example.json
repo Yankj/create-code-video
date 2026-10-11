@@ -1,0 +1,32 @@
+{
+  "exampleOnly": true,
+  "note": "项目记录格式；从实际对话填写。null 是待定。示例偏好不是所有任务的默认。",
+  "topic": "个人 Agent 如何从执行任务走到值得托付",
+  "audience": "AI 技术自媒体观众",
+  "platform": "抖音",
+  "format": {"aspectRatio": "9:16", "fps": 30, "durationSeconds": null},
+  "deliverables": {
+    "mp4": true,
+    "sourceProject": true,
+    "cover": null,
+    "publishingCopy": null,
+    "subtitleFile": null
+  },
+  "audio": {
+    "mode": "narration",
+    "language": "zh-CN",
+    "voicePreference": "轻松、有聊天感的女声；Vivian，偏明亮活泼",
+    "preferenceSource": "本案例用户已选择；新任务重新提取偏好",
+    "provider": null,
+    "sampleDecision": "沿用合适的既有选择；新音色先给可播放小样",
+    "music": null,
+    "budget": null
+  },
+  "intake": {
+    "askAtStartIfMissing": ["deliverables.cover", "deliverables.publishingCopy", "audio.voicePreference"],
+    "deliveryQuestionAsked": false,
+    "pendingChoices": ["deliverables.cover", "deliverables.publishingCopy"],
+    "continueWhileWaiting": ["资料核验", "口语稿", "分镜", "视觉工程"],
+    "preservePriorAnswers": true
+  }
+}

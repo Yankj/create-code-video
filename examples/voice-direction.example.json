@@ -1,0 +1,46 @@
+{
+  "exampleOnly": true,
+  "note": "声音项目记录，非通用 SDK 请求。Base 以参考承载声音身份，不接收这里的表演说明作为 instruct。",
+  "selection": {
+    "route": "Qwen 本地；本案例已使用并获得用户反馈",
+    "language": "Chinese",
+    "voicePreference": "Vivian；轻松聊天感、明亮活泼女声",
+    "reason": "用户选定；已有适用的 Apple Silicon 环境；无按次 API 调用费",
+    "appliesTo": "本案例，其他任务按实际需求选择"
+  },
+  "identity": {
+    "referenceOrigin": "使用有权使用的 CustomVoice 合成小样；不随仓库分发",
+    "referenceModel": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "referenceSpeaker": "Vivian",
+    "referencePath": null,
+    "referenceSha256": null,
+    "referenceTranscript": null,
+    "referenceInstruction": "用轻松、自然、明亮的中文女声说话，像跟朋友聊一个有趣的科技话题。带一点笑意和好奇感，问句自然上扬，转折有短暂停顿，语速中等偏快，避免播音腔和过度夸张。"
+  },
+  "synthesis": {
+    "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+    "modelRevision": null,
+    "weightVariant": null,
+    "runtime": {"mlx-audio": "0.5.8", "mlx": "0.32.3", "mlx-metal": "0.32.3"},
+    "supportedControl": "ref_audio + ref_text；采样参数。按实际运行库签名适配。",
+    "instruct": null,
+    "parameters": {"temperature": 0.55, "top_p": 0.95, "seed": 18011},
+    "chunking": "完整语义段；避免一句一调用；超长或漂移时按意思拆段",
+    "cacheKeyInputs": ["text", "model", "modelRevision", "weightVariant", "runtime", "language", "referenceSha256", "referenceTranscript", "parameters"]
+  },
+  "performance": {
+    "opening": {"intent": "像向朋友提出一个具体问题", "direction": "有好奇感，首句清楚；只在真正问句自然上扬，尽早落到观点"},
+    "explanation": {"intent": "说明关系", "direction": "语速稳定，专名清楚，每句一个主要重音"},
+    "turn": {"intent": "指出容易误解的地方", "direction": "转折前保留短气口，轻强调关键词，不突然换人或夸张喊话"},
+    "closing": {"intent": "判断式收束", "direction": "同一声线，结论完整，末句自然落定；不把所有字机械拉长"}
+  },
+  "assembly": {
+    "alignment": "依据实际音频对齐，回对原稿与专名",
+    "loudnessStartingPoint": {"integratedLUFS": -16, "truePeakDBTP": -1.5},
+    "normalizationScope": "整片；不是逐句峰值归一化",
+    "lastSpeechFrame": null,
+    "endingHoldFrames": null,
+    "endingHoldSecondsStartingPoint": [0.6, 1.2]
+  },
+  "qa": {"generationSucceeded": null, "asrChecked": null, "loudnessMeasured": null, "actuallyListened": false, "userFeedback": null}
+}

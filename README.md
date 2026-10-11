@@ -10,7 +10,7 @@
 <p align="center">
   <a href=".github/workflows/validate.yml"><img src="https://github.com/Yankj/create-code-video/actions/workflows/validate.yml/badge.svg" alt="Validation workflow" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-b8f4d7?labelColor=0c1420" alt="MIT license" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/skill-v3.1.0-d6fa78?labelColor=0c1420" alt="Skill version 3.1.0" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/skill-v3.2.0-d6fa78?labelColor=0c1420" alt="Skill version 3.2.0" /></a>
   <img src="https://img.shields.io/badge/visuals-pure_code-ff6c44?labelColor=0c1420" alt="Pure code visuals" />
 </p>
 <p align="center">
@@ -22,10 +22,12 @@ Turn a technical idea, product comparison, or data story into a video with a cle
 
 It is a production workflow, with runnable examples and checks. Rendering uses tools such as Remotion or HyperFrames. Visuals are drawn or arranged with code by default; no video or image generation model is required.
 
+Narrated videos include **TTS selection, voice direction, audio-aligned captions, and opening/ending delivery**. Covers and publishing copy are planned at the start when needed. The standalone Motion Lab below focuses on rendering mechanics; its audio setup does not define the production workflow.
+
 ## See it in motion
 
 <p align="center">
-  <img src="assets/motion-lab-preview.gif" width="320" alt="18-second silent demo: seeded particles gather, move through space, and become a verified request card, with a protected caption area." />
+  <img src="assets/motion-lab-preview.gif" width="320" alt="18-second motion example: seeded particles gather, move through space, and become a verified request card, with a protected caption area." />
 </p>
 <p align="center"><strong>Input → handoff → evidence → hold</strong><br />18 seconds · 9:16 · silent · original code-drawn graphics</p>
 
@@ -38,8 +40,17 @@ It is a production workflow, with runnable examples and checks. Rendering uses t
 | 🎬 **Story & direction** | One core topic; shots that show a cause and a result | Shot specification, persistent objects, reading holds |
 | ✨ **Motion & space** | Transitions with a purpose; particles and cameras with a shared clock | Frame-synced Three.js shaders, seeded data, seekable GSAP example |
 | 🎨 **Layout & identity** | Legible mobile typography; meaningful logos, interfaces and characters | Reserved caption regions, measured layout contracts, asset records, separate covers |
-| 🎙 **Voice & ending** | Consistent voice across semantic segments; a conclusion that lands | Reference settings, alignment, loudness and ending guidance |
+| 🎙 **Voice & delivery** | Pick a usable TTS route; direct curiosity, explanation, emphasis and closure | Provider comparison, consistent references, same-script samples, alignment and whole-track loudness |
+| 🖼 **Publishing package** | Confirm covers and copy early; package a clear, accurate topic | Intake brief, independent cover design and platform copy guidance |
 | ✅ **Export & verification** | Real deliverables, with evidence of what was checked | MP4 probing/decoding, frame captures, negative layout cases, preview provenance |
+
+## Voice and publishing
+
+The [TTS guide](references/tts-selection.md) distinguishes local inference, limited cloud APIs and free previews. It records the actual case progression: Edge draft → Qwen Vivian/Serena samples → the user's Vivian choice → fixed-reference Qwen Base synthesis in semantic paragraphs. Other providers are documented candidates, not claimed listening-test winners.
+
+[Voice direction](references/voice-and-sound.md) separates speaker identity, performance and spoken text. It gives practical directions for the opening, explanation, turn and final sentence, plus sample comparison, paragraph continuity, audio alignment and mixing. A passing ASR or loudness check is not a listening verdict.
+
+At the beginning of a new production, the agent [confirms missing cover/copy preferences](references/publishing-package.md) while continuing independent work. Existing choices carry forward. A cover can have its own style; its topic and publishing copy must still match the video. Editable [production brief](examples/production-brief.example.json) and [voice direction](examples/voice-direction.example.json) records help preserve decisions.
 
 ## Quick start
 
@@ -61,7 +72,8 @@ Keep a backup if you have a customized version. Other agents that support `SKILL
 ```text
 $create-code-video Make a 9:16 technical short about how a personal agent
 finishes a long-term goal. Show execution, observation, correction, and
-verification. Use code-drawn motion graphics. Deliver the MP4 and source.
+verification. Use code-drawn motion graphics and a conversational female
+voice. Deliver the MP4, source, cover, and publishing copy.
 ```
 
 An existing conversation can supply the topic, audience, references and preferences. The agent should continue to an actual file when a finished video is requested.
@@ -97,7 +109,8 @@ These rules are configurable. This example's 9:16 coordinates and spacing are no
 | [Skill entry](SKILL.md) | Task routing and the complete workflow |
 | [Story & direction](references/story-and-direction.md) | Core topic, shot purpose and motion hierarchy |
 | [Layout & assets](references/layout-and-assets.md) | Mobile typography, layout guards, identity and covers |
-| [Voice & sound](references/voice-and-sound.md) | Vocal consistency, subtitles and ending delivery |
+| [TTS selection](references/tts-selection.md) · [Voice direction](references/voice-and-sound.md) | Providers, actual case settings, human delivery, continuity and audio-aligned captions |
+| [Publishing package](references/publishing-package.md) | Early cover/copy choices and platform-ready deliverables |
 | [Transitions](references/transitions.md) · [3D & particles](references/three-and-particles.md) | Continuity, camera movement, shaders and GPU lifecycle |
 | [Render & QA](references/render-and-qa.md) | Capture, export, media inspection and preview checks |
 | [Remotion example](examples/remotion-motion-lab/README.md) · [GSAP seek example](examples/hyperframes-seek/README.md) | Runnable implementation starting points |
@@ -125,7 +138,7 @@ GitHub Actions checks documents, preview freshness, Python utilities, determinis
 
 ## Scope and license
 
-The example is silent. Voice guidance is included; a voice service, model weights or reference recordings are not bundled. Fonts use local fallback in the demo, so typography may differ across systems. Production projects should package a permitted font and verify its actual bounds. The guard catches declared layout violations; visual inspection still matters.
+TTS services, model weights and voice references are selected in the production environment rather than bundled in this repository. The guides record capabilities and tested case settings, not a permanent ranking of naturalness. Fonts use local fallback in the demo, so typography may differ across systems. Production projects should package a permitted font and verify its actual bounds. The guard catches declared layout violations; visual inspection still matters.
 
 Original instructions, tools and examples use the [MIT license](LICENSE). Dependencies and third-party assets retain their own terms, including [Remotion's license](https://www.remotion.dev/license). Upstream skills were researched, not copied or relicensed.
 
