@@ -1,0 +1,30 @@
+{
+  "name": "create-code-video-motion-lab",
+  "version": "3.0.0",
+  "private": true,
+  "license": "MIT",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "render": "remotion render src/index.ts MotionLab out/motion-lab.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --gl=swangle --concurrency=2",
+    "smoke": "remotion render src/index.ts MotionLab out/smoke.mp4 --frames=120-209 --scale=0.5 --codec=h264 --gl=swangle --concurrency=1",
+    "frames": "node scripts/render-check.mjs"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.5.0",
+    "@remotion/cli": "4.0.534",
+    "@remotion/three": "4.0.534",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.534",
+    "three": "0.181.2"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@types/three": "0.181.0",
+    "typescript": "5.9.3"
+  }
+}

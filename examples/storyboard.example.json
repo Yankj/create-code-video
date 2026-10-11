@@ -1,0 +1,12 @@
+{
+  "topic": "让同一个输入经过聚合、执行与验收，运动表达因果",
+  "fps": 30,
+  "durationFrames": 540,
+  "endingHoldFrames": 30,
+  "shots": [
+    {"id":"input","startFrame":0,"endFrame":150,"purpose":"建立分散输入与目标","hero":{"id":"request","state":"open"},"support":["particles"],"texture":"quiet grid","event":"散布输入向目标聚合","camera":"建立全景后轻推","stableFrame":105,"readHoldFrames":30,"evidence":{"kind":"illustration"},"audio":"silent demo"},
+    {"id":"execute","startFrame":150,"endFrame":330,"purpose":"让运动路径解释执行与结果","hero":{"id":"request","state":"executing"},"event":"聚合结构沿路径交接到结果","camera":"从输入空间抵达结果并落定","transitionIn":{"from":"input","kind":"persistent-object","overlapFrames":0},"stableFrame":270,"readHoldFrames":30,"evidence":{"kind":"illustration"}},
+    {"id":"verify","startFrame":330,"endFrame":450,"purpose":"揭示验收证据","hero":{"id":"request","state":"checked"},"event":"遮挡掠过后展示勾选结果","camera":"locked","transitionIn":{"from":"execute","kind":"occlusion","overlapFrames":0},"stableFrame":390,"readHoldFrames":45,"evidence":{"kind":"illustration"}},
+    {"id":"closing","startFrame":450,"endFrame":540,"purpose":"收束到运动服务理解","hero":{"id":"request","state":"complete"},"event":"结果稳定，结论出现并停留","camera":"locked","stableFrame":480,"readHoldFrames":60,"evidence":{"kind":"editorial"}}
+  ]
+}

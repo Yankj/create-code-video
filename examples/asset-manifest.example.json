@@ -1,0 +1,7 @@
+{
+  "assets": [
+    {"id":"request-icon","type":"procedural-svg","source":"original project code","license":"MIT","modifications":"none","role":"持续标识委托对象"},
+    {"id":"brand-mark-placeholder","type":"placeholder","source":null,"license":null,"modifications":null,"role":"正式制作时替换为已核验的官方产品标识","status":"not-a-real-logo"}
+  ],
+  "voice": {"provider":null,"modelVersion":null,"reference":null,"rights":null,"status":"silent example; no TTS included"}
+}

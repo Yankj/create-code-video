@@ -1,0 +1,9 @@
+interface:
+  display_name: "Create Code Video"
+  short_description: "纯代码视频制作：从核心观点、分镜导演到三维动效、配音与成片验收"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+  brand_color: "#FF6C44"
+  default_prompt: "使用 $create-code-video 把我的核心观点制作成纯代码动态视频，完成可播放成片并附可复现工程。"
+policy:
+  allow_implicit_invocation: true
