@@ -1,8 +1,12 @@
 {
-  "name":"create-code-video-hyperframes-seek",
-  "version":"3.0.0",
-  "private":true,
-  "license":"MIT",
-  "scripts":{"test":"node --test seek.test.mjs"},
-  "dependencies":{"gsap":"3.13.0"}
+  "name": "create-code-video-hyperframes-seek",
+  "version": "3.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test seek.test.mjs"
+  },
+  "dependencies": {
+    "gsap": "3.13.0"
+  }
 }

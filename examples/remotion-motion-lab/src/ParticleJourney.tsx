@@ -3,7 +3,7 @@ import {ThreeCanvas} from '@remotion/three';
 import {useThree} from '@react-three/fiber';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
 import * as THREE from 'three';
-import {cameraAt, particleData, stageAt} from './motion.mjs';
+import {cameraAt, mix, particleData, stageAt} from './motion.mjs';
 
 const vertex = `
 attribute vec3 aTarget;
@@ -39,6 +39,12 @@ const Camera: React.FC<{time:number}> = ({time}) => {
   useLayoutEffect(() => {
     camera.position.set(state.position[0], state.position[1], state.position[2]);
     camera.lookAt(state.target[0], state.target[1], state.target[2]);
+    if(camera instanceof THREE.PerspectiveCamera){
+      // Reframe for the reserved viewport: scattered inputs fit, then the
+      // gathered object becomes large enough to read as the main event.
+      camera.fov=mix(32,22,stageAt(time).gather);
+      camera.updateProjectionMatrix();
+    }
     camera.updateMatrixWorld();
   }, [camera, time]);
   return null;
@@ -46,7 +52,18 @@ const Camera: React.FC<{time:number}> = ({time}) => {
 
 const Field: React.FC<{time:number}> = ({time}) => {
   const data = useMemo(() => particleData(), []);
-  const s = stageAt(time);
+  const uniforms = useMemo(()=>({uTime:{value:0},uGather:{value:0},
+    uHandoff:{value:0},uAlpha:{value:1}}),[]);
+  useLayoutEffect(()=>{
+    const s=stageAt(time);
+    // Preserve the uniform objects cached by Three.js's compiled program.
+    // Replacing the whole map on every React render can leave stale values
+    // during a persistent export even when a fresh still looks correct.
+    uniforms.uTime.value=time;
+    uniforms.uGather.value=s.gather;
+    uniforms.uHandoff.value=s.handoff;
+    uniforms.uAlpha.value=s.fieldAlpha;
+  },[time,uniforms]);
   return <points frustumCulled={false}>
     <bufferGeometry>
       <bufferAttribute attach="attributes-position" args={[data.base,3]}/>
@@ -54,16 +71,15 @@ const Field: React.FC<{time:number}> = ({time}) => {
       <bufferAttribute attach="attributes-aPhase" args={[data.phase,1]}/>
     </bufferGeometry>
     <shaderMaterial vertexShader={vertex} fragmentShader={fragment} transparent depthWrite={false}
-      blending={THREE.AdditiveBlending} uniforms={{uTime:{value:time},uGather:{value:s.gather},
-        uHandoff:{value:s.handoff},uAlpha:{value:s.fieldAlpha}}}/>
+      blending={THREE.AdditiveBlending} uniforms={uniforms}/>
   </points>;
 };
 
-export const ParticleJourney: React.FC = () => {
-  const f = useCurrentFrame(), {fps,width,height} = useVideoConfig(), t = f/fps;
+export const ParticleJourney: React.FC<{viewport:{x:number;y:number;w:number;h:number}}> = ({viewport}) => {
+  const f = useCurrentFrame(), {fps} = useVideoConfig(), t = f/fps;
   const opacity = stageAt(t).handoff;
-  return <ThreeCanvas width={width} height={height} style={{position:'absolute',top:0,left:0}}
-    camera={{fov:42, near:0.1, far:50, position:[0,.2,11]}}>
+  return <ThreeCanvas width={viewport.w} height={viewport.h} style={{position:'absolute',top:viewport.y,left:viewport.x}}
+    camera={{fov:32, near:0.1, far:50, position:[0,.2,11]}}>
     <Camera time={t}/>
     <hemisphereLight args={['#d4ffe6','#15233b',2.1]}/>
     <directionalLight position={[4,5,6]} intensity={3}/>

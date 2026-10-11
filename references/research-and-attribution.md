@@ -23,3 +23,14 @@ Remotion 的截至此提交仓库根目录未发现 LICENSE，不能因此推定
 公开记录 [案例复盘](case-agent-video.md) 的可迁移经验：从页数转向语义段，从逐句 TTS 转向固定参考与上下文，从图标装饰转向身份/机制配图，从模板切页转向持续委托单；技术事实与产品热度推断始终分开。
 
 当前 Skill 保留“先叙事，后空间/材质/运动，再渲染”的方向，补齐可运行范例、结构化分镜、文件验收与声音边界。它不取代 Remotion/HyperFrames 的完整 API 文档，也不宣称自动保证专业配音或所有题材的导演效果。
+
+## README 结构调研
+
+2026-10-11 直接查看公开 README，借鉴信息组织方式，不复制项目文案、品牌图形或界面：
+
+- [Mermaid](https://github.com/mermaid-js/mermaid/blob/develop/README.md)：居中 Logo/标题、明确的一句话用途、快速入口和语言切换。用于本仓库的顶部入口。
+- [LobeHub](https://github.com/lobehub/lobehub/blob/canary/README.md)：视觉 Banner、英文/中文切换与状态徽章。本仓库只保留相关徽章，不增加无依据的下载量或排行榜装饰。
+- [Remotion](https://github.com/remotion-dev/remotion/blob/main/README.md)：从用途到 Get started，再到文档/许可/贡献入口。用于安装与样例运行的分工。
+- [shadcn/ui](https://github.com/shadcn-ui/ui/blob/main/README.md)：简短产品定义、Hero 图与清楚的文档/贡献/许可入口。用于控制主 README 的解释负担，详细检查命令折叠，方法留在参考文档。
+
+英文与中文 README 保持同等入口与检查范围。Banner 用独立原创 SVG 程序生成；演示 GIF 从修正成片重建并绑定源码版本。

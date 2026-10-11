@@ -36,6 +36,25 @@ python scripts/inspect_video.py output.mp4 --out frames --times 0,3,6,9,12,15,17
 
 `inspect_video.py` 额外需要 Pillow，只写新/空输出目录。打开联系表检查真实画面。连贯性检查仍需短片段或播放。
 
+## 成片与单帧一致性
+
+独立静帧正确不证明持续导出正确。对照实际 MP4 的相同帧与独立渲染 PNG，必要时限定主体 ROI；可用 [成片帧对照工具](../scripts/compare_rendered_frames.py)。它发现持续实例的参数/缓存不同步，允许编码误差，但只证明被采样帧在同一环境的状态一致，不是跨设备像素一致或完整艺术评价。
+
+Motion Lab 提供 `npm run preview:build`：关键帧/布局反例 → 完整导出 → 解码与成片帧对照 → 生成 GIF。前一项失败就不覆盖预览，减少跳过检查或使用旧文件的机会。Python/Pillow 与 ffmpeg/ffprobe 需提前可用。
+
+## 预览与来源一致性
+
+网页/README 的 GIF 要从已验收成片生成，不能沿用先前版本。缩小会丢细节，因此保留完整 MP4 的交付/复现入口，不把 GIF 当作所有运动质量的证明。
+
+```bash
+python scripts/build_preview.py examples/remotion-motion-lab/out/motion-lab.mp4 assets/motion-lab-preview.gif
+python scripts/build_preview.py --check assets/motion-lab-preview.json
+```
+
+工具需要 Pillow 与 ffmpeg/ffprobe。它核对比例、总时长、每帧延迟与循环，并将每个 GIF 帧与同样 fps/缩放的源视频帧比较，允许调色板量化差异。保存成片哈希、源码输入哈希与 GIF 哈希；代码或动图改变后，CI 的来源检查会失败，需从新成片重建。成片未纳入仓库时，CI 可检查源码/预览一致性，不能重新证明其源 MP4 内容。
+
+帧对应正确不代表源画面正确：先通过实际布局检查与查看，再生成动图。文档中的 HTML img/src 与 a/href 也需验证本地目标，不能仅检查 Markdown 链接。
+
 ## 声音
 
 核对采样率、声道、音轨与字幕，测量只是辅助。连续听看段落连接和结尾：错读、声音身份漂移、响度跳变、截尾、音乐抢话。ASR 匹配只支持文本核对，不能替代试听。

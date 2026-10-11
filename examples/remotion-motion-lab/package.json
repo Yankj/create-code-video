@@ -1,16 +1,20 @@
 {
   "name": "create-code-video-motion-lab",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
   "license": "MIT",
-  "engines": {"node": ">=22"},
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
     "render": "remotion render src/index.ts MotionLab out/motion-lab.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --gl=swangle --concurrency=2",
     "smoke": "remotion render src/index.ts MotionLab out/smoke.mp4 --frames=120-209 --scale=0.5 --codec=h264 --gl=swangle --concurrency=1",
-    "frames": "node scripts/render-check.mjs"
+    "frames": "node scripts/render-check.mjs",
+    "verify-export": "python3 ../../scripts/qa_video.py out/motion-lab.mp4 --width 1080 --height 1920 --fps 30 --duration 18 && python3 ../../scripts/compare_rendered_frames.py out/motion-lab.mp4 out/frames/check.json --out out/render-match.json",
+    "preview:build": "npm run frames && npm run render && npm run verify-export && python3 ../../scripts/build_preview.py out/motion-lab.mp4 ../../assets/motion-lab-preview.gif"
   },
   "dependencies": {
     "@react-three/fiber": "9.5.0",

@@ -54,3 +54,9 @@ Remotion：ThreeCanvas 传 width/height，所有动画由 `useCurrentFrame()` �
 HyperFrames：核对当前 Three adapter 的 `hf-seek` 事件与 readiness，根节点显式有限时长；渲染关键资源注册到当前框架就绪机制。不以自由运行 requestAnimationFrame 作为真值。
 
 参考依据见 [调研记录](research-and-attribution.md)。不要直接复制交互 WebGL 示例中的 `Math.random()` / clock / 增量 loop 到离线视频。
+
+## 持续渲染中的参数同步
+
+Shader 的 uniforms 保持对象身份稳定，按绝对帧更新各项 `.value`。不要每次 React render 替换整个 uniforms map：某些 Three.js 编译缓存仍引用先前对象，使“独立单帧正确、连续成片错误”。在捕获前的 layout effect 更新时间/阶段值，和相机共用帧时间；无需 `useFrame()` 或额外墙上时钟。
+
+除独立/乱序静帧，还要从实际成片解码相同帧，与独立静帧比较，稀疏粒子需单独比较机制主体 ROI，避免全图均值掩盖局部错误。编码和不同渲染缩放会造成小差异，阈值按同一环境校准；不要用过大的容差放过阶段不一致。示例 [成片/单帧对照](../scripts/compare_rendered_frames.py) 能拒绝本次发现的 stale uniforms 成片。

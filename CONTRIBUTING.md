@@ -7,3 +7,5 @@
 不要提交私人截图、声音参考、凭据、模型缓存、node_modules 或不明来源的品牌素材。吸收第三方方法保留出处；移植代码需遵守其许可与归因。
 
 本地运行 README 中的 Python 检查，以及示例的 npm test / typecheck。涉及 Shader、相机或捕获时增加真实短片段检查；自动测试不能替代视觉与听觉判断。
+
+修改 Motion Lab 的渲染输入后，运行 `npm run frames` 与导出检查，再从新 MP4 重建 README GIF 与来源记录。不能只手工改校验值让旧动图通过。修改主 README 时同步中英文版，确认 Markdown 与 HTML 图片/链接都有效。

@@ -1,65 +1,132 @@
-# create-code-video
+<p align="center">
+  <img src="assets/icon.svg" width="84" height="84" alt="Create Code Video icon" />
+</p>
+<h1 align="center">Create Code Video</h1>
+<p align="center"><strong>Videos built with code. Delivered as files.</strong></p>
+<p align="center">An agent skill for narrative, motion design, sound, and verified video exports.</p>
+<p align="center">
+  <strong>English</strong> · <a href="README.zh-CN.md">简体中文</a>
+</p>
+<p align="center">
+  <a href=".github/workflows/validate.yml"><img src="https://github.com/Yankj/create-code-video/actions/workflows/validate.yml/badge.svg" alt="Validation workflow" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-b8f4d7?labelColor=0c1420" alt="MIT license" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/skill-v3.1.0-d6fa78?labelColor=0c1420" alt="Skill version 3.1.0" /></a>
+  <img src="https://img.shields.io/badge/visuals-pure_code-ff6c44?labelColor=0c1420" alt="Pure code visuals" />
+</p>
+<p align="center">
+  <a href="#quick-start">🚀 Quick start</a> · <a href="#see-it-in-motion">▶ Demo</a> · <a href="#documentation">📖 Docs</a> · <a href="CONTRIBUTING.md">🛠 Contribute</a>
+</p>
+<p align="center"><img src="assets/banner.svg" width="1000" alt="Ideas in motion. Built with code. An original procedural banner." /></p>
 
-把核心观点做成有叙事、有空间、有声音设计的纯代码视频。支持技术机制解释、产品对比、数据叙事与三维抽象宣传片；交付实际视频文件和可复现工程。
+Turn a technical idea, product comparison, or data story into a video with a clear point and deliberate motion. This skill guides an agent from research and shot direction to a playable **MP4 and reproducible source project**.
 
-**v3.0** 把制作经验与四套上游 Skills 的调研沉淀成导演方法、声音流程、可运行三维示例与验证脚本。默认不调用视频/图像生成模型。
+It is a production workflow, with runnable examples and checks. Rendering uses tools such as Remotion or HyperFrames. Visuals are drawn or arranged with code by default; no video or image generation model is required.
 
-<img src="assets/motion-lab-preview.gif" width="270" alt="纯代码三维粒子聚合、相机交接、委托单验收与结尾停留示例" />
+## See it in motion
 
-上图是完整 18 秒无声样例的缩小预览；源码可导出 1080×1920 MP4。
+<p align="center">
+  <img src="assets/motion-lab-preview.gif" width="320" alt="18-second silent demo: seeded particles gather, move through space, and become a verified request card, with a protected caption area." />
+</p>
+<p align="center"><strong>Input → handoff → evidence → hold</strong><br />18 seconds · 9:16 · silent · original code-drawn graphics</p>
 
-## 安装 Skill
+[Run the Motion Lab](examples/remotion-motion-lab/README.md) to export the full 1080×1920, 30fps MP4. The GIF is a 360px / 10fps preview generated from the corrected export. Its timing, every frame's conversion fidelity, and source freshness are checked by [the preview tool](scripts/build_preview.py).
+
+## What it covers
+
+| | Production decision | Included support |
+| --- | --- | --- |
+| 🎬 **Story & direction** | One core topic; shots that show a cause and a result | Shot specification, persistent objects, reading holds |
+| ✨ **Motion & space** | Transitions with a purpose; particles and cameras with a shared clock | Frame-synced Three.js shaders, seeded data, seekable GSAP example |
+| 🎨 **Layout & identity** | Legible mobile typography; meaningful logos, interfaces and characters | Reserved caption regions, measured layout contracts, asset records, separate covers |
+| 🎙 **Voice & ending** | Consistent voice across semantic segments; a conclusion that lands | Reference settings, alignment, loudness and ending guidance |
+| ✅ **Export & verification** | Real deliverables, with evidence of what was checked | MP4 probing/decoding, frame captures, negative layout cases, preview provenance |
+
+## Quick start
+
+### 1. Install the skill
 
 ```bash
 git clone https://github.com/Yankj/create-code-video.git
 mkdir -p ~/.codex/skills/create-code-video
-cp -R create-code-video/SKILL.md create-code-video/agents create-code-video/assets create-code-video/references create-code-video/scripts create-code-video/examples ~/.codex/skills/create-code-video/
+cp -R create-code-video/SKILL.md create-code-video/agents \
+  create-code-video/assets create-code-video/references \
+  create-code-video/scripts create-code-video/examples \
+  ~/.codex/skills/create-code-video/
 ```
 
-其他支持 SKILL.md 的 Agent 可放到其对应的 skills 目录。安装前保留已有自定义版本；无需安装所有示例依赖即可读取 Skill。刷新技能列表或开启新会话后使用：
+Keep a backup if you have a customized version. Other agents that support `SKILL.md` can use their own skills directory. Reading the skill does not require installing the example dependencies. Refresh the skill list or start a new session.
+
+### 2. Give it a topic and a deliverable
 
 ```text
-$create-code-video 把“个人 Agent 如何完成长期目标”做成 9:16 技术短视频，
-重点解释执行、观察、修正与验收。用纯代码动态图形，附 MP4 和源码。
+$create-code-video Make a 9:16 technical short about how a personal agent
+finishes a long-term goal. Show execution, observation, correction, and
+verification. Use code-drawn motion graphics. Deliver the MP4 and source.
 ```
 
-## 内容
+An existing conversation can supply the topic, audience, references and preferences. The agent should continue to an actual file when a finished video is requested.
 
-- [SKILL.md](SKILL.md)：目的、决策与制作流程，按需路由。
-- [references/](references/)：分镜、排版、品牌资产、配音/结尾、转场、三维/粒子、渲染验收。
-- [Remotion Motion Lab](examples/remotion-motion-lab/README.md)：18 秒无声竖屏演示，GPU 粒子、相机旅行、持续对象、遮挡揭示、结尾停留。
-- [HyperFrames seek](examples/hyperframes-seek/README.md)：有限 GSAP 时间轴与可定位状态，面向 HyperFrames 的入口示例。
-- [scripts/](scripts/)：视频抽帧、分镜验证、媒体探测与完整解码；工具不会冒充人工导演或听感评价。
-- [调研与归因](references/research-and-attribution.md)：上游提交、吸收方法、许可证边界。
+### 3. Run the standalone example
 
-## 运行三维示例
-
-Node.js 22，npm。首次渲染会安装 Remotion 的浏览器；需能获取依赖。示例不调用外部视频、图片或 TTS 服务。
+Requires **Node.js 22+** and npm. The first render needs a browser download. No external image, model or TTS service is called by this example.
 
 ```bash
-cd examples/remotion-motion-lab
+cd create-code-video/examples/remotion-motion-lab
 npm ci
 npm test
 npm run typecheck
-npm run studio
-npm run render
+npm run frames   # rendered layout checks + deliberate failure cases
+npm run render   # out/motion-lab.mp4
+npm run verify-export # decode + encoded/still agreement; needs Python/Pillow/ffmpeg
 ```
 
-输出 `out/motion-lab.mp4`，1080×1920、30fps、18s、无声。可先运行 `npm run smoke` 导出 3 秒小样。默认用软件 WebGL 提高离线兼容性；可按实际 GPU 环境调整。
+Use `npm run studio` to edit and `npm run smoke` for a short draft. The example uses software WebGL by default. Browser overrides and font requirements are documented in the [example guide](examples/remotion-motion-lab/README.md).
 
-根目录结构/脚本验证：
+## Layout and preview safeguards
+
+**A layout contract connects the design to the rendered result.** The Motion Lab uses one design plane, explicit typography and card sizes, a dedicated 3D viewport, and a protected caption area. After fonts load, each rendered frame checks transformed DOM bounds, text overflow, card containment and caption clearance. A violation stops the export. Deliberately broken layouts verify that the guard rejects errors.
+
+**A preview belongs to a particular export and source.** `npm run preview:build` runs frame checks, full export, decoding and encoded/still comparison before rebuilding the GIF.  The GIF builder compares every frame against the same sampled MP4, checks geometry and loop timing, and stores source/asset hashes. CI rejects a stale or altered preview. Conversion checks establish fidelity to the source; they do not judge whether the source is well directed.
+
+These rules are configurable. This example's 9:16 coordinates and spacing are not universal platform requirements. Another aspect ratio needs a new layout.
+
+## Documentation
+
+| Guide | Use it for |
+| --- | --- |
+| [Skill entry](SKILL.md) | Task routing and the complete workflow |
+| [Story & direction](references/story-and-direction.md) | Core topic, shot purpose and motion hierarchy |
+| [Layout & assets](references/layout-and-assets.md) | Mobile typography, layout guards, identity and covers |
+| [Voice & sound](references/voice-and-sound.md) | Vocal consistency, subtitles and ending delivery |
+| [Transitions](references/transitions.md) · [3D & particles](references/three-and-particles.md) | Continuity, camera movement, shaders and GPU lifecycle |
+| [Render & QA](references/render-and-qa.md) | Capture, export, media inspection and preview checks |
+| [Remotion example](examples/remotion-motion-lab/README.md) · [GSAP seek example](examples/hyperframes-seek/README.md) | Runnable implementation starting points |
+| [Research & attribution](references/research-and-attribution.md) | Upstream revisions, borrowed methods and license boundaries |
+| [Validation record](VALIDATION.md) · [Changelog](CHANGELOG.md) | What was measured and what changed |
+
+<details>
+<summary><strong>Repository checks</strong></summary>
+
+From the repository root, install Pillow for image/preview utilities. Media checks need ffmpeg and ffprobe on `PATH`.
 
 ```bash
+python3 -m pip install Pillow
 python3 scripts/check_skill.py
+python3 scripts/build_preview.py --check assets/motion-lab-preview.json
 python3 -m unittest discover -s tests -v
 python3 scripts/validate_storyboard.py examples/storyboard.example.json
-python3 scripts/qa_video.py examples/remotion-motion-lab/out/motion-lab.mp4 --width 1080 --height 1920 --fps 30 --duration 18
+python3 scripts/qa_video.py examples/remotion-motion-lab/out/motion-lab.mp4 \
+  --width 1080 --height 1920 --fps 30 --duration 18
 ```
 
-媒体脚本需要 ffmpeg/ffprobe；抽帧额外需要 Pillow。两套示例的确定性逻辑测试、Remotion 实际离线渲染结果见 [验证记录](VALIDATION.md)。GitHub Actions 检查 Python 工具、文档链接、Node 测试与 TypeScript；不把未执行的人工试听写成通过。
+GitHub Actions checks documents, preview freshness, Python utilities, deterministic logic and TypeScript. Rendered GPU/layout checks are run through `npm run frames`; full rendering and artistic review are separate. See [validation boundaries](VALIDATION.md).
 
-## 许可与贡献
+</details>
 
-本仓库原创文本、工具与示例采用 [MIT](LICENSE)。第三方依赖、字体、Logo、声音与其他资产使用其各自的条件；尤其 Remotion 运行库许可需按 [官方说明](https://www.remotion.dev/license) 核对。本仓库没有重新许可第三方素材或移植上游 Skills。
+## Scope and license
 
-欢迎用实际镜头/输出问题提交改进。贡献请保留纯代码默认、证据与推断分离、确定性时钟、具体交付和检查边界。详情见 [贡献约定](CONTRIBUTING.md) 与 [变更记录](CHANGELOG.md)。
+The example is silent. Voice guidance is included; a voice service, model weights or reference recordings are not bundled. Fonts use local fallback in the demo, so typography may differ across systems. Production projects should package a permitted font and verify its actual bounds. The guard catches declared layout violations; visual inspection still matters.
+
+Original instructions, tools and examples use the [MIT license](LICENSE). Dependencies and third-party assets retain their own terms, including [Remotion's license](https://www.remotion.dev/license). Upstream skills were researched, not copied or relicensed.
+
+Contributions work best with a concrete shot, a rendered failure, or a reproducible improvement. See [CONTRIBUTING.md](CONTRIBUTING.md).
