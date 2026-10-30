@@ -10,7 +10,7 @@
 <p align="center">
   <a href=".github/workflows/validate.yml"><img src="https://github.com/Yankj/create-code-video/actions/workflows/validate.yml/badge.svg" alt="Validation workflow" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-b8f4d7?labelColor=0c1420" alt="MIT license" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/skill-v3.2.0-d6fa78?labelColor=0c1420" alt="Skill version 3.2.0" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/skill-v3.3.0-d6fa78?labelColor=0c1420" alt="Skill version 3.3.0" /></a>
   <img src="https://img.shields.io/badge/visuals-pure_code-ff6c44?labelColor=0c1420" alt="Pure code visuals" />
 </p>
 <p align="center">
@@ -114,6 +114,7 @@ These rules are configurable. This example's 9:16 coordinates and spacing are no
 | [Transitions](references/transitions.md) · [3D & particles](references/three-and-particles.md) | Continuity, camera movement, shaders and GPU lifecycle |
 | [Render & QA](references/render-and-qa.md) | Capture, export, media inspection and preview checks |
 | [Remotion example](examples/remotion-motion-lab/README.md) · [GSAP seek example](examples/hyperframes-seek/README.md) | Runnable implementation starting points |
+| [Kids science genre](references/science-kids.md) · [Rainbow sample](examples/science-rainbow/README.md) | Spoken science for ages 3–8; a Remotion short whose timeline follows real TTS durations |
 | [Research & attribution](references/research-and-attribution.md) | Upstream revisions, borrowed methods and license boundaries |
 | [Validation record](VALIDATION.md) · [Changelog](CHANGELOG.md) | What was measured and what changed |
 
