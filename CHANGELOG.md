@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.0 — 2026-10-30
+
+- 增加儿童科普题材插件 `references/science-kids.md`：3–8 岁口语结构、动效禁忌、科学口径与轻验收；不另立 Skill，不引入视频生成模型，不搬石榴 G0–G12。
+- 主入口「按任务读取」增加指向该参考的一行；中英文 README 文档导航各补一条彩虹样例入口。
+- 收入 `examples/science-rainbow/`（RainbowV2 口播时间轴、v1 对照、`npm i` / `gen_audio` / `render`）；注明 Remotion 与 Edge TTS 许可边界。
+
 ## 3.2.0 — 2026-10-11
 
 - 把配音选型与导演纳入 Skill 主流程，明确独立的无音轨工程示例不代表正式视频默认无声。

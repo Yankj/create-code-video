@@ -1,4 +1,12 @@
-# Validation — v3.2.0 — 2026-10-11
+# Validation — v3.3.0 — 2026-10-30
+
+## Kids science genre — 3.3
+
+Added [science-kids.md](references/science-kids.md) as an on-demand genre plugin and [examples/science-rainbow](examples/science-rainbow/README.md) as the spoken rainbow sample. The Skill entry table and both README documentation indexes now point to them. This revision does not claim a new GPU export, listening test, or G0–G12-style gate.
+
+Checked: document targets, timeline JSON (five beats, voice files on disk, textbook 青), and the example's Node structure tests. `npm ci` / `typecheck` for the rainbow sample are part of CI; full Remotion render of RainbowV2 is not run on GitHub Actions.
+
+## Voice and publishing guidance — 3.2
 
 ## Voice and publishing guidance — 3.2
 
@@ -6,7 +14,7 @@ Reviewed the original narrated project's Edge, CustomVoice and Base configuratio
 
 Checked the Skill's entry routing, the expanded opening/turn/closing directions, the early cover/copy question, and both JSON record examples. The voice JSON is a production record, not a universal SDK payload; Base has no CustomVoice instruction field. No new synthesis, free-account eligibility test, cloud call or listening review is claimed for this documentation revision.
 
-The Motion Lab source, dependencies and GIF are unchanged. Its 3.1 render measurements below remain the evidence for that example. Documentation links, Skill metadata, JSON parsing and preview freshness are checked for this revision; CI also runs the existing 21 utility/Node tests and TypeScript.
+The Motion Lab source, dependencies and GIF are unchanged. Its 3.1 render measurements below remain the evidence for that example. Documentation links, Skill metadata, JSON parsing and preview freshness are checked for the 3.2 revision. Later CI also covers the science-rainbow structure tests and TypeScript.
 
 ## Motion Lab export — 3.1
 

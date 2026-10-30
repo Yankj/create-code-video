@@ -10,7 +10,7 @@
 <p align="center">
   <a href=".github/workflows/validate.yml"><img src="https://github.com/Yankj/create-code-video/actions/workflows/validate.yml/badge.svg" alt="验证工作流" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-b8f4d7?labelColor=0c1420" alt="MIT 许可" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/skill-v3.2.0-d6fa78?labelColor=0c1420" alt="Skill 版本 3.2.0" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/skill-v3.3.0-d6fa78?labelColor=0c1420" alt="Skill 版本 3.3.0" /></a>
   <img src="https://img.shields.io/badge/visuals-pure_code-ff6c44?labelColor=0c1420" alt="纯代码视觉" />
 </p>
 <p align="center">
@@ -113,6 +113,7 @@ npm run verify-export # 解码 + 成片/单帧一致性，需要 Python/Pillow/f
 | [转场](references/transitions.md) · [三维与粒子](references/three-and-particles.md) | 连续性、相机、Shader 与 GPU 生命周期 |
 | [渲染与验收](references/render-and-qa.md) | 捕获、导出、媒体检查、预览校验 |
 | [Remotion 示例](examples/remotion-motion-lab/README.md) · [GSAP seek 示例](examples/hyperframes-seek/README.md) | 可运行的工程起点 |
+| [儿童科普题材](references/science-kids.md) · [彩虹样例](examples/science-rainbow/README.md) | 3–8 岁口语科普；口播真实时长驱动画面时间轴的 Remotion 短片 |
 | [调研与归因](references/research-and-attribution.md) | 上游提交、吸收方法与许可边界 |
 | [验证记录](VALIDATION.md) · [变更记录](CHANGELOG.md) | 实际测量了什么、版本改了什么 |
 

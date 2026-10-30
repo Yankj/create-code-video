@@ -3,7 +3,7 @@ name: create-code-video
 description: 用纯代码制作有设计质感的动态视频，包括技术机制动画、三维抽象宣传片、产品对比、项目展示和数据叙事。适用于“纯代码做视频”“不用视频生成模型”“参考这个视频做动效”“Three.js/Shader/粒子宣传片”“把技术观点做成短视频”等请求。覆盖参考拆解、核心观点、分镜导演、版式与品牌配图、TTS 选型与声音导演、确定性时间轴、MP4 导出验收及封面/发布配文。仅分析时止于分析；仅更新 Skill 时不制作无关成片。普通网页、单张图片、常规剪辑及视频生成模型任务使用相应工具。
 license: MIT
 metadata:
-  version: "3.2.0"
+  version: "3.3.0"
 ---
 
 # 代码动态设计视频
@@ -36,6 +36,7 @@ metadata:
 | 褶皱、切片、地形、轨道、金属材质 | [材质与运动配方](references/motion-recipes.md) |
 | 实现、资源同步、导出、验证、故障 | [渲染与验收](references/render-and-qa.md) |
 | 调研出处、与其他 Skills 的差异 | [调研与归因](references/research-and-attribution.md) |
+| 3–8 岁口语科普、示意图加厚中间段、口播驱动时间轴 | [儿童科普（纯代码）](references/science-kids.md) |
 
 ## 1. 定义交付与证据
 
@@ -85,7 +86,7 @@ metadata:
 
 选一条主路线，多个层可以共享同一时钟。不要无故叠加时间轴框架。读取实际可用的官方 Skill 或文档；示例固定依赖只用于复现，不能代表永远最新 API。
 
-内置 [Remotion Motion Lab](examples/remotion-motion-lab/README.md) 有可运行的 GPU 粒子聚合、三维相机旅行、持续对象、遮挡转场与结尾停留；[HyperFrames seek 示例](examples/hyperframes-seek/README.md) 展示单一受控 GSAP 时间轴。它们是最小机制样例；Motion Lab 为方便独立运行省去了音轨，正式项目的旁白仍按需求制作。
+内置 [Remotion Motion Lab](examples/remotion-motion-lab/README.md) 有可运行的 GPU 粒子聚合、三维相机旅行、持续对象、遮挡转场与结尾停留；[HyperFrames seek 示例](examples/hyperframes-seek/README.md) 展示单一受控 GSAP 时间轴。它们是最小机制样例；Motion Lab 为方便独立运行省去了音轨，正式项目的旁白仍按需求制作。3–8 岁口语科普另读 [儿童科普题材](references/science-kids.md)，并用 [彩虹样例](examples/science-rainbow/README.md) 复现口播驱动时间轴；题材插件不改变主流程，也不引入视频生成模型。
 
 ## 6. 同步视觉、配音和字幕
 

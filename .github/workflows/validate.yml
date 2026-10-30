@@ -25,3 +25,5 @@ jobs:
         working-directory: examples/remotion-motion-lab
       - run: npm ci && npm test
         working-directory: examples/hyperframes-seek
+      - run: npm ci && npm test && npm run typecheck
+        working-directory: examples/science-rainbow
